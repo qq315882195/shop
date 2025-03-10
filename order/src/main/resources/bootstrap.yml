@@ -1,0 +1,72 @@
+spring:
+  redis:
+    redisson:
+      config: |
+        singleServerConfig:
+          address: "redis://localhost:6379"
+          database: 0
+          connectionPoolSize: 64  # 连接池大小
+          connectionMinimumIdleSize: 24  # 最小空闲连接数
+          idleConnectionTimeout: 10000  # 空闲连接超时时间
+          connectTimeout: 3000  # 连接超时时间
+          timeout: 3000  # 操作超时时间
+  shardingsphere:
+    # 数据源配置
+    datasource:
+      # 数据源名称，多数据源以逗号分隔
+      names: ds0
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://192.168.230.129:3306/order?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+        username: user
+        password: Xcp19941205..
+    # 分片规则配置
+    rules:
+      sharding:
+        # 分片算法配置
+        sharding-algorithms:
+          table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: sale_order_0$->{order_no % 2}
+        tables:
+          # 逻辑表名称
+          sale_order:
+            actual-data-nodes: ds0.sale_order_0$->{0..1}
+            # 分表策略
+            table-strategy:
+              standard:
+                # 分片列名称
+                sharding-column: order_no
+                # 分片算法名称
+                sharding-algorithm-name: table-inline
+    # 属性配置
+    props:
+      # 展示修改以后的sql语句
+      sql-show: true
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+  cloud:
+    nacos:
+      discovery:
+        namespace: xue
+        server-addr: 127.0.0.1:8848
+      config:
+        namespace: xue
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        group: DEFAULT_GROUP
+        data-id: order-service-local
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.world.pojo
