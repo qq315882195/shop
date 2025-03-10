@@ -1,0 +1,10 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: order-service
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.fasterxml.jackson: DEBUG
+    org.apache.shardingsphere: DEBUG

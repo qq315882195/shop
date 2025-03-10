@@ -1,0 +1,11 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: chat
+  profiles:
+    active: local
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.fasterxml.jackson: DEBUG
