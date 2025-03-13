@@ -1,4 +1,6 @@
 spring:
+  elasticsearch:
+    uris: http://localhost:9200
   redis:
     redisson:
       config: |
@@ -69,4 +71,4 @@ pagehelper:
   params: count=countSql
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.example.world.pojo
+  type-aliases-package: com.example.order.pojo

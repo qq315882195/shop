@@ -2,6 +2,7 @@ package com.example.order.controller;
 
 
 import com.example.order.dto.OrderDTO;
+import com.example.order.dto.OrderQuery;
 import com.example.order.sevice.OrderService;
 import com.example.order.vo.OrderVO;
 import com.example.order.response.Result;
@@ -19,11 +20,13 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping("/getOrderList")
-    public Result getOrderList(@RequestBody OrderDTO orderDTO){
-        List<OrderVO> orderList=orderService.getOrderList(orderDTO);
+
+    @RequestMapping("/getOrderPage")
+    public Result getOrderPage(@RequestBody OrderQuery orderQuery){
+        List<OrderVO> orderList=orderService.getOrderPage(orderQuery);
         return Result.success(orderList);
     }
+
 
     @RequestMapping("/getOrderById")
     public Result getOrderById(@RequestBody OrderDTO orderDTO){

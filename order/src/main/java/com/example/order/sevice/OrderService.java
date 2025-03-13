@@ -37,6 +37,9 @@ public class OrderService {
 
     @Resource
     private OrderConsigneeService orderConsigneeService;
+    
+    @Autowired
+    private EsOptionService esOptionService;
 
     @Autowired
     private JmsTemplate jmsTemplate;
@@ -106,5 +109,10 @@ public class OrderService {
             log.error("发送写入es消息失败",e);
         }
         return true;
+    }
+
+    public List<OrderVO> getOrderPage(OrderQuery orderQuery) {
+        esOptionService.searchOrder(orderQuery);
+        return null;
     }
 }

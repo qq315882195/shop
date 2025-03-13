@@ -2,8 +2,8 @@ package com.example.order.enums;
 
 public enum OrderErrorEnum {
     OPERATION_ERROR("0001", "操作异常"),
-    ORDER_NOT_EXIST("0002", "订单不存在")
-    ;
+    ORDER_NOT_EXIST("0002", "订单不存在"),
+    ES_ORDER_SEARCH_ERROR("0003","ES订单查询异常");
 
     private String code;
     private String desc;

@@ -10,8 +10,8 @@
     <groupId>com.example</groupId>
     <artifactId>order</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>world</name>
-    <description>world</description>
+    <name>order</name>
+    <description>order</description>
     <packaging>jar</packaging>
     <dependencies>
         <!-- web -->
@@ -114,6 +114,25 @@
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
+        </dependency>
+
+        <!-- 由于 Spring Boot 3.x 默认支持 Elasticsearch 8.x-->
+        <!-- Spring Boot Starter Data Elasticsearch -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
+        <!-- Elasticsearch Java Client (适用于 Elasticsearch 8.x) -->
+        <dependency>
+            <groupId>co.elastic.clients</groupId>
+            <artifactId>elasticsearch-java</artifactId>
+            <version>8.7.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 </project>

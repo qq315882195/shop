@@ -10,8 +10,8 @@
     <groupId>com.example</groupId>
     <artifactId>user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>chat</name>
-    <description>chat</description>
+    <name>user</name>
+    <description>user</description>
     <packaging>jar</packaging>
     <dependencies>
         <!-- web -->
